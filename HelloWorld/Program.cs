@@ -20,10 +20,9 @@ namespace HelloWorld
             string flush = "/K ipconfig /flushdns";
             string register = "/K ipconfig /registerdns";
             string tracert = "/K  tracert -4" + website + "";
-            string LanDisable = "/netsh interface set interface" + " " + "LAN0" + " " + "admin=disable";
+            string LanDisable = "netsh interface set interface" + " " + "LAN0" + " " + "admin=disable";
 
-            //workflow choices
-
+            //Answer variable
             int inputAnswer = Convert.ToInt32(answer);
 
             //CMD choice options
@@ -34,8 +33,8 @@ namespace HelloWorld
                 if(answer == "")
                 {
                     for (int a = 0; a < 64; a++)
-                    {
-                        Console.WriteLine("Choose your ipconfig script: 1 Ipconfig, 2 Release, 3 Renew, 4 Register DNS, 5 Flush DNS, 6 Tracert");
+                    {   //Options to choose which script shall be ran
+                        Console.WriteLine("Choose your workflow: 1 Ipconfig, 2 Release, 3 Renew, 4 Register DNS, 5 Flush DNS, 6 Tracert");
                         string input = Console.ReadLine();
                         Console.WriteLine(input);
                         if (input == "")
@@ -56,7 +55,7 @@ namespace HelloWorld
                                     break;
                                 case 2:
                                     Process.Start("CMD.exe", ren);
-
+                                    
                                     break;
                                 case 3:
                                     Process.Start("CMD.exe", rel);
@@ -73,6 +72,10 @@ namespace HelloWorld
                                     Console.WriteLine("type the website http address to start tracert");
                                     string website = Console.ReadLine();
                                     Process.Start("CMD.exe", tracert);
+                                    break;
+                                case 7:
+                                    Process.Start("CMD.exe", LanDisable);
+                                    a = -1;
                                     break;
                             }
                         }
@@ -107,9 +110,7 @@ namespace HelloWorld
                     }
                 }
             }
-            Console.WriteLine("Choose you workflow");
-
-            System.Diagnostics.Process.Start("CMD.exe", answer);
-        }    
+          //  System.Diagnostics.Process.Start("CMD.exe", answer);
+        }
     }
 }
