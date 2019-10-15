@@ -7,9 +7,11 @@ using System.Net.Sockets;
 namespace HelloWorld
 {
     class Program
-    {
+    {  
+        //Variables to be used.
         private static string answer;
         private static string website;
+        private static string exit;
 
         static void Main(string[] args)
         {
@@ -41,14 +43,15 @@ namespace HelloWorld
                         {
                             Console.WriteLine("No input detected");
                             a = -1;
-
                         }
                         else
                         {
+                            //Convert the input string to an integer so that it can be used in the switch
                             int caseSwitch = Convert.ToInt32(input);
 
                             switch (caseSwitch)
                             {
+                                //Depending on the input number, it will go to the appropriate cmd script
                                 default:
                                     Process.Start("CMD.exe", con);
 
@@ -83,6 +86,8 @@ namespace HelloWorld
                 }
                 else
                 {
+                    //This switch is purely for when you press H.
+                    //It will give you the options to see which cmd Scripts are present.
                     switch (inputAnswer)
                     {
                         default:
@@ -110,7 +115,6 @@ namespace HelloWorld
                     }
                 }
             }
-          //  System.Diagnostics.Process.Start("CMD.exe", answer);
         }
     }
 }
